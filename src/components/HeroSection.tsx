@@ -1,0 +1,177 @@
+import React, { useRef, useEffect } from 'react';
+import { motion } from 'framer-motion';
+
+export const HeroSection: React.FC = () => {
+  const heroRef = useRef<HTMLDivElement>(null);
+  const modelWrapperRef = useRef<HTMLDivElement>(null);
+  const blueModelRef = useRef<HTMLDivElement>(null);
+
+  const targetPos = useRef({ x: -1000, y: -1000 });
+  const smoothPos = useRef({ x: -1000, y: -1000 });
+  const isHovered = useRef(false);
+
+  useEffect(() => {
+    let animId: number;
+
+    const updateSpotlight = () => {
+      if (isHovered.current) {
+        smoothPos.current.x += (targetPos.current.x - smoothPos.current.x) * 0.15;
+        smoothPos.current.y += (targetPos.current.y - smoothPos.current.y) * 0.15;
+      }
+
+      if (blueModelRef.current) {
+        if (isHovered.current) {
+          const radius = window.innerWidth < 768 ? 70 : 100;
+          const { x, y } = smoothPos.current;
+
+          const mask = `radial-gradient(circle ${radius}px at ${x}px ${y}px, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 50%, rgba(0,0,0,0.6) 80%, rgba(0,0,0,0) 100%)`;
+
+          blueModelRef.current.style.maskImage = mask;
+          blueModelRef.current.style.webkitMaskImage = mask;
+          blueModelRef.current.style.opacity = '1';
+        } else {
+          blueModelRef.current.style.opacity = '0';
+        }
+      }
+
+      animId = requestAnimationFrame(updateSpotlight);
+    };
+
+    animId = requestAnimationFrame(updateSpotlight);
+
+    return () => cancelAnimationFrame(animId);
+  }, []);
+
+  const updateCursorPosition = (clientX: number, clientY: number) => {
+    if (!blueModelRef.current) return;
+    const rect = blueModelRef.current.getBoundingClientRect();
+
+    targetPos.current = {
+      x: clientX - rect.left,
+      y: clientY - rect.top,
+    };
+
+    if (!isHovered.current) {
+      smoothPos.current = { ...targetPos.current };
+      isHovered.current = true;
+    }
+  };
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    updateCursorPosition(e.clientX, e.clientY);
+  };
+
+  const handlePointerLeave = () => {
+    isHovered.current = false;
+  };
+
+  const customEasing = [0.16, 1, 0.3, 1];
+
+  return (
+    <motion.section
+      ref={heroRef}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, ease: customEasing }}
+      className="relative w-full min-h-[85vh] lg:min-h-[92vh] bg-[#ECECEC] flex flex-col justify-between px-6 md:px-16 pt-32 sm:pt-36 pb-10 overflow-hidden select-none"
+    >
+      {/* Background Oversized LEOR Brand Name in Light Grey */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
+        <h1 className="text-[25vw] font-[900] tracking-tighter text-[#D4D4D4] leading-none select-none font-sans uppercase transform scale-105">
+          LEOR
+        </h1>
+      </div>
+
+      {/* Hero Content Container */}
+      <div className="max-w-7xl mx-auto w-full flex-1 flex flex-col justify-between z-10 relative">
+        {/* Top Section: Left Header Eyebrow */}
+        <div className="flex justify-between items-start pt-2">
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.1, ease: customEasing }}
+            className="text-xs font-bold tracking-[0.22em] uppercase text-[#111111] space-y-1.5"
+          >
+            <div>MODERN DENIM.</div>
+            <div>TIMELESS STYLE.</div>
+            <div className="w-28 h-[1.5px] bg-[#111111] mt-1"></div>
+          </motion.div>
+        </div>
+
+        {/* Center: Model Image overlapping giant light grey LEOR */}
+        <motion.div
+          ref={modelWrapperRef}
+          onPointerMove={handlePointerMove}
+          onPointerLeave={handlePointerLeave}
+          initial={{ opacity: 0, scale: 0.97 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, delay: 0.2, ease: customEasing }}
+          className="absolute inset-0 flex items-center justify-center cursor-crosshair z-10 pointer-events-auto"
+        >
+          {/* Base Layer: MODEL_BLACK */}
+          <div className="relative flex items-center justify-center h-full pointer-events-none">
+            <img
+              src="/assets/hero-model-black.png"
+              alt="LEOR Editorial Outfit"
+              className="h-[65vh] md:h-[75vh] lg:h-[82vh] max-h-[780px] w-auto object-contain pointer-events-none drop-shadow-xl"
+            />
+          </div>
+
+          {/* Interactive Spotlight Reveal Layer: MODEL_BLUE */}
+          <div
+            ref={blueModelRef}
+            className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 transition-opacity duration-200"
+            style={{
+              willChange: 'mask-image, -webkit-mask-image',
+            }}
+          >
+            <img
+              src="/assets/hero-model-blue.png"
+              alt="LEOR Blue Denim Outfit Detail"
+              className="h-[65vh] md:h-[75vh] lg:h-[82vh] max-h-[780px] w-auto object-contain pointer-events-none drop-shadow-xl"
+            />
+          </div>
+        </motion.div>
+
+        {/* Bottom Bar: Left CTAs & Right Collection Badge */}
+        <div className="flex items-end justify-between pt-12 z-20">
+          {/* Bottom Left CTAs */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.4, ease: customEasing }}
+            className="flex flex-wrap items-center gap-6"
+          >
+            <a
+              href="#collections"
+              className="bg-[#111111] text-white px-7 py-3.5 text-xs font-semibold tracking-[0.2em] uppercase hover:bg-neutral-800 transition-all duration-200 shadow-md hover:shadow-lg"
+            >
+              EXPLORE COLLECTION
+            </a>
+
+            <a
+              href="#new-arrivals"
+              className="text-xs font-semibold tracking-[0.2em] uppercase text-[#111111] hover:text-neutral-600 transition-colors underline underline-offset-8 decoration-1"
+            >
+              SHOP NEW IN
+            </a>
+          </motion.div>
+
+          {/* Bottom Right Stacked Badge */}
+          <motion.div
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, delay: 0.5, ease: customEasing }}
+            className="flex flex-col text-right text-xs font-bold tracking-[0.25em] uppercase text-[#111111] leading-snug"
+          >
+            <span>NEW</span>
+            <span>COLLECTION</span>
+            <span>2024</span>
+          </motion.div>
+        </div>
+      </div>
+    </motion.section>
+  );
+};
+
+
