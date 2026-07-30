@@ -106,7 +106,7 @@ export const HeroSection: React.FC = () => {
     >
       {/* Background Oversized LEOR Brand Name in Light Grey */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
-        <h1 className="text-[25vw] font-[900] tracking-tighter text-[#D4D4D4] opacity-90 leading-none select-none font-sans uppercase transform scale-105">
+        <h1 className="text-[25vw] font-[900] tracking-tighter text-[#111111] opacity-[0.09] leading-none select-none font-sans uppercase transform scale-105">
           LEOR
         </h1>
       </div>
