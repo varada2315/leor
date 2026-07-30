@@ -113,7 +113,7 @@ export const HeroSection: React.FC = () => {
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.2, ease: customEasing }}
-          className="absolute inset-0 flex items-center justify-center cursor-crosshair z-10 pointer-events-auto translate-y-4 sm:translate-y-6 md:translate-y-8"
+          className="absolute inset-0 flex items-center justify-center cursor-crosshair z-10 pointer-events-auto -translate-y-5 sm:-translate-y-8 md:-translate-y-10"
         >
           {/* Interactive wrapper containing both models, sized to the image */}
           <div className="relative h-full flex items-center justify-center touch-none md:touch-auto">
@@ -122,7 +122,7 @@ export const HeroSection: React.FC = () => {
               <img
                 src="/assets/hero-model-desaturated.png"
                 alt="LEOR Editorial Outfit"
-                className="h-[52vh] sm:h-[65vh] md:h-[75vh] lg:h-[82vh] max-h-[780px] w-auto object-contain pointer-events-none drop-shadow-xl"
+                className="h-[48vh] sm:h-[58vh] md:h-[68vh] lg:h-[75vh] max-h-[700px] w-auto object-contain pointer-events-none drop-shadow-xl"
               />
             </div>
 
@@ -137,7 +137,7 @@ export const HeroSection: React.FC = () => {
               <img
                 src="/assets/hero-model-denim-blue.png"
                 alt="LEOR Blue Denim Outfit Detail"
-                className="h-[52vh] sm:h-[65vh] md:h-[75vh] lg:h-[82vh] max-h-[780px] w-auto object-contain pointer-events-none drop-shadow-xl"
+                className="h-[48vh] sm:h-[58vh] md:h-[68vh] lg:h-[75vh] max-h-[700px] w-auto object-contain pointer-events-none drop-shadow-xl"
               />
             </div>
           </div>
