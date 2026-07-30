@@ -161,7 +161,7 @@ export const HeroSection: React.FC = () => {
 
             <a
               href="#new-arrivals"
-              className="text-center text-xs font-semibold tracking-[0.2em] uppercase text-[#111111] hover:text-neutral-600 transition-colors underline underline-offset-6 sm:underline-offset-8 decoration-1 py-1"
+              className="bg-white text-[#111111] border border-[#111111]/15 px-6 sm:px-7 py-3 sm:py-3.5 text-center text-xs font-semibold tracking-[0.2em] uppercase hover:bg-neutral-100 hover:border-[#111111] transition-all duration-200 shadow-xs hover:shadow-md"
             >
               SHOP NEW IN
             </a>
