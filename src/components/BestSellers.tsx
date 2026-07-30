@@ -138,21 +138,21 @@ export const BestSellers: React.FC = () => {
                     />
                   )}
 
-                  {/* Slide-Up Action Buttons */}
-                  <div className="absolute inset-x-3 bottom-3 flex gap-2 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 translate-y-0 sm:translate-y-2 sm:group-hover:translate-y-0 transition-all duration-300 z-10">
+                  {/* Floating Action Buttons */}
+                  <div className="absolute inset-x-3 bottom-3 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 z-10">
                     <button
                       onClick={() => addToCart(product, 'M')}
-                      className="flex-1 bg-black text-white text-[10px] font-black tracking-widest uppercase py-3 flex items-center justify-center gap-2 hover:bg-neutral-800 transition-colors shadow-lg cursor-pointer"
+                      className="flex-1 bg-black/90 backdrop-blur-md text-white text-[10px] font-extrabold tracking-[0.18em] uppercase py-2.5 px-3 rounded-full flex items-center justify-center gap-2 hover:bg-black transition-all shadow-lg cursor-pointer"
                     >
                       <ShoppingBag size={13} />
-                      ADD TO BAG
+                      <span>ADD TO BAG</span>
                     </button>
                     <button
                       onClick={() => setQuickViewProduct(product)}
-                      className="w-10 bg-white text-black flex items-center justify-center hover:bg-neutral-100 transition-colors shadow-lg cursor-pointer"
+                      className="w-9 h-9 rounded-full bg-white/90 backdrop-blur-md text-black flex items-center justify-center hover:bg-black hover:text-white transition-all shadow-lg cursor-pointer shrink-0"
                       title="Quick View"
                     >
-                      <Eye size={15} />
+                      <Eye size={14} />
                     </button>
                   </div>
                 </div>

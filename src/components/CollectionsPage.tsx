@@ -301,14 +301,21 @@ export const CollectionsPage: React.FC = () => {
                         />
                       </button>
 
-                      {/* Hover Overlay Buttons */}
-                      <div className="absolute inset-x-4 bottom-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex gap-2 z-10">
+                      {/* Floating Action Buttons */}
+                      <div className="absolute inset-x-3 bottom-3 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 z-10">
+                        <button
+                          onClick={() => addToCart(product, selectedSize)}
+                          className="flex-1 bg-black/90 backdrop-blur-md text-white text-[10px] font-extrabold tracking-[0.18em] uppercase py-2.5 px-3 rounded-full flex items-center justify-center gap-2 hover:bg-black transition-all shadow-lg cursor-pointer"
+                        >
+                          <ShoppingBag size={13} />
+                          <span>ADD TO BAG</span>
+                        </button>
                         <button
                           onClick={() => setQuickViewProduct(product)}
-                          className="flex-1 bg-white/95 backdrop-blur-md text-black py-3 px-4 text-[10px] font-black tracking-widest uppercase flex items-center justify-center gap-2 hover:bg-black hover:text-white transition-colors cursor-pointer shadow-md"
+                          className="w-9 h-9 rounded-full bg-white/90 backdrop-blur-md text-black flex items-center justify-center hover:bg-black hover:text-white transition-all shadow-lg cursor-pointer shrink-0"
+                          title="Quick View"
                         >
                           <Eye size={14} />
-                          Quick View
                         </button>
                       </div>
                     </div>
