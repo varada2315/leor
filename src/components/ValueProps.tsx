@@ -27,8 +27,8 @@ const FEATURES = [
 
 export const ValueProps: React.FC = () => {
   return (
-    <section className="bg-[#f0f0f2] py-12 px-6 md:px-12 border-b border-black/5">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    <section className="bg-[#f0f0f2] py-10 sm:py-12 px-4 sm:px-6 md:px-12 border-b border-black/5">
+      <div className="max-w-7xl mx-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
         {FEATURES.map((item, idx) => {
           const IconComponent = item.icon;
           return (

@@ -36,8 +36,8 @@ const CATEGORIES: CategoryCard[] = [
 
 export const CategoryHighlights: React.FC = () => {
   return (
-    <section className="bg-[#0e0e10] text-white py-16 px-6 md:px-12 border-t border-white/10">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section className="bg-[#0e0e10] text-white py-12 sm:py-16 px-4 sm:px-6 md:px-12 border-t border-white/10">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
         {CATEGORIES.map((cat, idx) => (
           <motion.div
             key={cat.title}
@@ -45,10 +45,10 @@ export const CategoryHighlights: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: '-50px' }}
             transition={{ duration: 0.7, delay: idx * 0.15 }}
-            className="group flex flex-col sm:flex-row items-center gap-6 bg-[#161619] p-5 rounded-sm border border-white/5 hover:border-white/20 transition-all duration-300 hover:bg-[#1c1c20]"
+            className="group flex flex-row items-center gap-4 sm:gap-6 bg-[#161619] p-4 sm:p-5 rounded-sm border border-white/5 hover:border-white/20 transition-all duration-300 hover:bg-[#1c1c20]"
           >
             {/* Model Image Thumbnail */}
-            <div className="relative w-28 h-36 shrink-0 overflow-hidden bg-neutral-900 rounded-sm">
+            <div className="relative w-20 sm:w-28 h-28 sm:h-36 shrink-0 overflow-hidden bg-neutral-900 rounded-sm">
               <img
                 src={cat.image}
                 alt={cat.title}

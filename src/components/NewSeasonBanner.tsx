@@ -39,8 +39,8 @@ export const NewSeasonBanner: React.FC = () => {
   const { setActiveView } = useStore();
 
   return (
-    <section className="bg-[#e4e4e6] relative overflow-hidden py-14 md:py-24 px-6 md:px-16 border-t border-b border-black/5">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+    <section className="bg-[#e4e4e6] relative overflow-hidden py-10 sm:py-16 md:py-24 px-4 sm:px-6 md:px-16 border-t border-b border-black/5">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-12 items-center">
 
         {/* ── Left: staggered text block ── */}
         <motion.div
@@ -48,18 +48,18 @@ export const NewSeasonBanner: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.25 }}
-          className="space-y-6 max-w-xl"
+          className="space-y-4 sm:space-y-6 max-w-xl"
         >
           {/* NEW SEASON label */}
-          <motion.div variants={fadeUpItem} className="space-y-2">
-            <span className="text-xs font-bold tracking-[0.3em] uppercase text-neutral-600 block">
+          <motion.div variants={fadeUpItem} className="space-y-1.5 sm:space-y-2">
+            <span className="text-[10px] sm:text-xs font-bold tracking-[0.3em] uppercase text-neutral-600 block">
               NEW SEASON
             </span>
 
             {/* NEW VIBES heading */}
             <motion.h2
               variants={fadeUpItem}
-              className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-[0.08em] uppercase text-[#111111] leading-none font-sans"
+              className="text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-[0.08em] uppercase text-[#111111] leading-none font-sans"
             >
               NEW VIBES
             </motion.h2>
