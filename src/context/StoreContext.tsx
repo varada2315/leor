@@ -1,14 +1,19 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Product, CartItem } from '../types';
+import { PRODUCTS } from '../data/products';
+
+export type ActiveView = 'home' | 'wishlist' | 'about' | 'collections';
 
 interface StoreContextType {
   cart: CartItem[];
   wishlist: string[];
+  activeView: ActiveView;
   isCartOpen: boolean;
   isWishlistOpen: boolean;
   isSearchOpen: boolean;
   quickViewProduct: Product | null;
   toastMessage: string | null;
+  setActiveView: (view: ActiveView) => void;
   setCartOpen: (open: boolean) => void;
   setWishlistOpen: (open: boolean) => void;
   setSearchOpen: (open: boolean) => void;
@@ -17,6 +22,8 @@ interface StoreContextType {
   removeFromCart: (productId: string, size: string) => void;
   updateQuantity: (productId: string, size: string, delta: number) => void;
   toggleWishlist: (productId: string) => void;
+  clearWishlist: () => void;
+  moveAllWishlistToCart: () => void;
   showToast: (msg: string) => void;
   cartTotal: number;
   cartCount: number;
@@ -35,11 +42,52 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     return saved ? JSON.parse(saved) : [];
   });
 
+  const [activeView, setActiveViewInternal] = useState<ActiveView>(() => {
+    if (typeof window !== 'undefined') {
+      if (window.location.hash === '#wishlist') return 'wishlist';
+      if (window.location.hash === '#about') return 'about';
+      if (window.location.hash === '#collections') return 'collections';
+    }
+    return 'home';
+  });
+
   const [isCartOpen, setCartOpen] = useState(false);
   const [isWishlistOpen, setWishlistOpen] = useState(false);
   const [isSearchOpen, setSearchOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState<Product | null>(null);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
+
+  useEffect(() => {
+    const handleHashChange = () => {
+      if (window.location.hash === '#wishlist') {
+        setActiveViewInternal('wishlist');
+      } else if (window.location.hash === '#about') {
+        setActiveViewInternal('about');
+      } else if (window.location.hash === '#collections') {
+        setActiveViewInternal('collections');
+      } else if (window.location.hash === '' || window.location.hash === '#home' || window.location.hash === '#') {
+        setActiveViewInternal('home');
+      }
+    };
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
+  const setActiveView = (view: ActiveView) => {
+    setActiveViewInternal(view);
+    if (view === 'wishlist') {
+      window.location.hash = 'wishlist';
+    } else if (view === 'about') {
+      window.location.hash = 'about';
+    } else if (view === 'collections') {
+      window.location.hash = 'collections';
+    } else {
+      if (window.location.hash === '#wishlist' || window.location.hash === '#about' || window.location.hash === '#collections') {
+        window.history.pushState('', document.title, window.location.pathname + window.location.search);
+      }
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     localStorage.setItem('leor_cart', JSON.stringify(cart));
@@ -104,6 +152,20 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     });
   };
 
+  const clearWishlist = () => {
+    setWishlist([]);
+    showToast(`Cleared all items from wishlist`);
+  };
+
+  const moveAllWishlistToCart = () => {
+    if (wishlist.length === 0) return;
+    const wishlistProducts = PRODUCTS.filter((p) => wishlist.includes(p.id));
+    wishlistProducts.forEach((p) => {
+      addToCart(p, p.sizes?.[0] || 'M');
+    });
+    showToast(`Moved ${wishlistProducts.length} items to your bag`);
+  };
+
   const cartTotal = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -112,11 +174,13 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
       value={{
         cart,
         wishlist,
+        activeView,
         isCartOpen,
         isWishlistOpen,
         isSearchOpen,
         quickViewProduct,
         toastMessage,
+        setActiveView,
         setCartOpen,
         setWishlistOpen,
         setSearchOpen,
@@ -125,6 +189,8 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         removeFromCart,
         updateQuantity,
         toggleWishlist,
+        clearWishlist,
+        moveAllWishlistToCart,
         showToast,
         cartTotal,
         cartCount,
