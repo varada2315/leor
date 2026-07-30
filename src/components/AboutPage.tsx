@@ -88,7 +88,7 @@ export const AboutPage: React.FC = () => {
               variants={fadeUp} initial="hidden" animate="visible" custom={0}
               className="text-[10px] font-black tracking-[0.45em] uppercase text-neutral-400 mb-5"
             >
-              About LEOR™
+              About LEOR<span className="text-[0.45em] font-normal align-top relative -top-[0.2em] ml-0.5 tracking-normal opacity-75">TM</span>
             </motion.p>
 
             <motion.h1
@@ -175,7 +175,7 @@ export const AboutPage: React.FC = () => {
             />
             {/* floating badge */}
             <div className="absolute bottom-5 left-5 bg-black/90 backdrop-blur-sm text-white px-4 py-2.5 space-y-0.5">
-              <p className="text-[9px] font-bold tracking-[0.3em] uppercase text-neutral-400">LEOR™ Promise</p>
+              <p className="text-[9px] font-bold tracking-[0.3em] uppercase text-neutral-400">LEOR<span className="text-[0.45em] font-normal align-top relative -top-[0.2em] ml-0.5 tracking-normal opacity-75">TM</span> Promise</p>
               <p className="text-sm font-bold">Every stitch. Every time.</p>
             </div>
           </div>

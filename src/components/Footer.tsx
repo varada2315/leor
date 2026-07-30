@@ -53,8 +53,8 @@ export const Footer: React.FC = () => {
 
           {/* Brand Identity (Cols 5-7) */}
           <div className="lg:col-span-3 flex flex-col items-start lg:items-center text-left lg:text-center space-y-3">
-            <h2 className="text-4xl font-extrabold tracking-[0.2em] uppercase text-white inline-flex items-start">
-              LEOR<span className="text-[0.45em] align-top relative -top-[0.1em] ml-0.5 font-bold">™</span>
+            <h2 className="text-4xl font-extrabold tracking-[0.2em] uppercase text-white">
+              LEOR<span className="text-[0.4em] font-normal align-top relative -top-[0.25em] ml-0.5 tracking-normal opacity-75">TM</span>
             </h2>
             <p className="text-xs font-serif italic text-neutral-400">Own Your Edge.</p>
 

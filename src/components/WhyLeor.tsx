@@ -97,10 +97,10 @@ export const WhyLeor: React.FC = () => {
           <div className="space-y-3 max-w-xl">
             <div className="inline-flex items-center gap-2 text-[10px] font-extrabold tracking-[0.4em] uppercase text-neutral-400">
               <span className="w-6 h-px bg-neutral-400" />
-              The LEOR™ Standard
+              The LEOR<span className="text-[0.45em] font-normal align-top relative -top-[0.2em] ml-0.5 tracking-normal opacity-75">TM</span> Standard
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight uppercase font-sans text-white leading-none">
-              Why LEOR™<span className="text-neutral-500">.</span>
+              Why LEOR<span className="text-[0.38em] font-normal align-top relative -top-[0.3em] ml-0.5 tracking-normal opacity-80">TM</span><span className="text-neutral-500">.</span>
             </h2>
           </div>
           <p className="text-xs md:text-sm text-neutral-400 max-w-md font-normal leading-relaxed">
