@@ -41,11 +41,11 @@ export const QuickViewModal: React.FC = () => {
           </button>
 
           {/* Product Image Column */}
-          <div className="relative bg-neutral-100 h-52 sm:h-72 md:h-full min-h-[200px] shrink-0">
+          <div className="relative bg-[#f0f0f2] aspect-[3/4] md:aspect-auto max-h-[340px] md:max-h-none w-full shrink-0 flex items-center justify-center overflow-hidden">
             <img
               src={quickViewProduct.image}
               alt={quickViewProduct.name}
-              className="w-full h-full object-cover object-top grayscale contrast-110"
+              className="w-full h-full object-contain object-center grayscale contrast-110"
             />
             {quickViewProduct.tag && (
               <span className="absolute top-3 left-3 bg-black text-white text-[9px] font-extrabold tracking-[0.2em] uppercase px-2.5 py-1 z-10 shadow-sm">
