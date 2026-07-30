@@ -75,7 +75,7 @@ const cardVariants = {
 
 export const WhyLeor: React.FC = () => {
   return (
-    <section className="relative bg-[#0b0b0d] text-white py-24 px-6 md:px-12 overflow-hidden border-t border-b border-white/10">
+    <section className="relative bg-[#0b0b0d] text-white py-14 sm:py-20 md:py-24 px-4 sm:px-6 md:px-12 overflow-hidden border-t border-b border-white/10">
       {/* Background Ambient Glow & Grain */}
       <div className="absolute inset-0 bg-radial from-white/[0.04] via-transparent to-transparent pointer-events-none" />
       <div
@@ -87,19 +87,19 @@ export const WhyLeor: React.FC = () => {
       />
 
       {/* Decorative Large Watermark Background */}
-      <div className="absolute right-4 bottom-0 text-[18rem] md:text-[24rem] font-black text-white/[0.02] select-none pointer-events-none leading-none tracking-tighter">
+      <div className="absolute right-4 bottom-0 text-[12rem] sm:text-[18rem] md:text-[24rem] font-black text-white/[0.02] select-none pointer-events-none leading-none tracking-tighter">
         LEOR™
       </div>
 
-      <div className="relative max-w-7xl mx-auto space-y-16">
+      <div className="relative max-w-7xl mx-auto space-y-8 sm:space-y-12 md:space-y-16">
         {/* Top Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-white/10 pb-8">
-          <div className="space-y-3 max-w-xl">
-            <div className="inline-flex items-center gap-2 text-[10px] font-extrabold tracking-[0.4em] uppercase text-neutral-400">
-              <span className="w-6 h-px bg-neutral-400" />
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 sm:gap-6 border-b border-white/10 pb-6 sm:pb-8">
+          <div className="space-y-2 sm:space-y-3 max-w-xl">
+            <div className="inline-flex items-center gap-2 text-[9px] sm:text-[10px] font-extrabold tracking-[0.35em] sm:tracking-[0.4em] uppercase text-neutral-400">
+              <span className="w-5 sm:w-6 h-px bg-neutral-400" />
               The LEOR<span className="text-[0.45em] font-normal align-top relative -top-[0.2em] ml-0.5 tracking-normal opacity-75">TM</span> Standard
             </div>
-            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight uppercase font-sans text-white leading-none">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight uppercase font-sans text-white leading-none">
               Why LEOR<span className="text-[0.38em] font-normal align-top relative -top-[0.3em] ml-0.5 tracking-normal opacity-80">TM</span><span className="text-neutral-500">.</span>
             </h2>
           </div>
@@ -114,7 +114,7 @@ export const WhyLeor: React.FC = () => {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 md:gap-6"
         >
           {WHY_LEOR_ITEMS.map((item) => {
             const Icon = item.icon;
@@ -122,30 +122,30 @@ export const WhyLeor: React.FC = () => {
               <motion.div
                 key={item.title}
                 variants={cardVariants}
-                className="group relative bg-[#131316]/90 border border-white/10 p-8 rounded-xs hover:border-white/40 hover:bg-[#18181c] transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                className="group relative bg-[#131316]/90 border border-white/10 p-4 sm:p-6 md:p-8 rounded-xs hover:border-white/40 hover:bg-[#18181c] transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
                 {/* Top Subtle Number & Tag */}
-                <div className="flex items-center justify-between pb-6 border-b border-white/5">
-                  <span className="text-xs font-mono font-bold tracking-widest text-neutral-500 group-hover:text-white transition-colors">
+                <div className="flex items-center justify-between pb-3 sm:pb-5 border-b border-white/5">
+                  <span className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-neutral-500 group-hover:text-white transition-colors">
                     {item.num}
                   </span>
-                  <span className="text-[9px] font-semibold tracking-[0.2em] uppercase text-neutral-400 bg-white/5 px-2.5 py-1 rounded-xs group-hover:bg-white group-hover:text-black transition-all">
+                  <span className="text-[8px] sm:text-[9px] font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-neutral-400 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-xs group-hover:bg-white group-hover:text-black transition-all truncate max-w-[90px] sm:max-w-none">
                     {item.tag}
                   </span>
                 </div>
 
                 {/* Content */}
-                <div className="py-6 space-y-4">
-                  <div className="w-12 h-12 rounded-xs bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-white group-hover:text-black transition-all duration-300">
-                    <Icon size={22} strokeWidth={1.5} />
+                <div className="py-4 sm:py-6 space-y-3 sm:space-y-4">
+                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xs bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-white group-hover:text-black transition-all duration-300">
+                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={1.5} />
                   </div>
 
-                  <div className="space-y-2">
-                    <h3 className="text-lg font-bold tracking-tight text-white flex items-center justify-between group-hover:translate-x-0.5 transition-transform">
-                      {item.title}
-                      <ArrowUpRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity text-neutral-400" />
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <h3 className="text-xs sm:text-base md:text-lg font-bold tracking-tight text-white flex items-center justify-between group-hover:translate-x-0.5 transition-transform leading-tight">
+                      <span>{item.title}</span>
+                      <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-neutral-400 hidden sm:block shrink-0" />
                     </h3>
-                    <p className="text-xs text-neutral-400 leading-relaxed font-normal">
+                    <p className="text-[10px] sm:text-xs text-neutral-400 leading-relaxed font-normal">
                       {item.description}
                     </p>
                   </div>
