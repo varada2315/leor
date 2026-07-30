@@ -108,13 +108,13 @@ export const WhyLeor: React.FC = () => {
           </p>
         </div>
 
-        {/* 6 Grid Cards */}
+        {/* 6 Grid Cards — 1 card per row on mobile */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: '-50px' }}
-          className="grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-5 md:gap-6"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6"
         >
           {WHY_LEOR_ITEMS.map((item) => {
             const Icon = item.icon;
@@ -122,30 +122,30 @@ export const WhyLeor: React.FC = () => {
               <motion.div
                 key={item.title}
                 variants={cardVariants}
-                className="group relative bg-[#131316]/90 border border-white/10 p-4 sm:p-6 md:p-8 rounded-xs hover:border-white/40 hover:bg-[#18181c] transition-all duration-300 flex flex-col justify-between overflow-hidden"
+                className="group relative bg-[#131316]/90 border border-white/10 p-5 sm:p-6 md:p-8 rounded-xs hover:border-white/40 hover:bg-[#18181c] transition-all duration-300 flex flex-col justify-between overflow-hidden"
               >
                 {/* Top Subtle Number & Tag */}
-                <div className="flex items-center justify-between pb-3 sm:pb-5 border-b border-white/5">
-                  <span className="text-[10px] sm:text-xs font-mono font-bold tracking-widest text-neutral-500 group-hover:text-white transition-colors">
+                <div className="flex items-center justify-between pb-4 sm:pb-5 border-b border-white/5">
+                  <span className="text-xs font-mono font-bold tracking-widest text-neutral-500 group-hover:text-white transition-colors">
                     {item.num}
                   </span>
-                  <span className="text-[8px] sm:text-[9px] font-semibold tracking-[0.15em] sm:tracking-[0.2em] uppercase text-neutral-400 bg-white/5 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-xs group-hover:bg-white group-hover:text-black transition-all truncate max-w-[90px] sm:max-w-none">
+                  <span className="text-[9px] font-semibold tracking-[0.2em] uppercase text-neutral-400 bg-white/5 px-2.5 py-1 rounded-xs group-hover:bg-white group-hover:text-black transition-all">
                     {item.tag}
                   </span>
                 </div>
 
                 {/* Content */}
-                <div className="py-4 sm:py-6 space-y-3 sm:space-y-4">
-                  <div className="w-9 h-9 sm:w-12 sm:h-12 rounded-xs bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-white group-hover:text-black transition-all duration-300">
-                    <Icon className="w-4 h-4 sm:w-5 sm:h-5" strokeWidth={1.5} />
+                <div className="py-5 sm:py-6 space-y-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xs bg-white/5 border border-white/10 flex items-center justify-center text-white group-hover:scale-110 group-hover:bg-white group-hover:text-black transition-all duration-300">
+                    <Icon size={20} strokeWidth={1.5} />
                   </div>
 
-                  <div className="space-y-1.5 sm:space-y-2">
-                    <h3 className="text-xs sm:text-base md:text-lg font-bold tracking-tight text-white flex items-center justify-between group-hover:translate-x-0.5 transition-transform leading-tight">
+                  <div className="space-y-2">
+                    <h3 className="text-base sm:text-lg font-bold tracking-tight text-white flex items-center justify-between group-hover:translate-x-0.5 transition-transform leading-tight">
                       <span>{item.title}</span>
-                      <ArrowUpRight size={14} className="opacity-0 group-hover:opacity-100 transition-opacity text-neutral-400 hidden sm:block shrink-0" />
+                      <ArrowUpRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity text-neutral-400 shrink-0" />
                     </h3>
-                    <p className="text-[10px] sm:text-xs text-neutral-400 leading-relaxed font-normal">
+                    <p className="text-xs sm:text-xs text-neutral-400 leading-relaxed font-normal">
                       {item.description}
                     </p>
                   </div>
