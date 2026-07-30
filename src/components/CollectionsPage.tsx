@@ -301,62 +301,53 @@ export const CollectionsPage: React.FC = () => {
                         />
                       </button>
 
-                      {/* Floating Action Buttons */}
-                      <div className="absolute inset-x-3 bottom-3 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 z-10">
-                        <button
-                          onClick={() => addToCart(product, selectedSize)}
-                          className="flex-1 bg-black/90 backdrop-blur-md text-white text-[10px] font-extrabold tracking-[0.18em] uppercase py-2.5 px-3 rounded-full flex items-center justify-center gap-2 hover:bg-black transition-all shadow-lg cursor-pointer"
-                        >
-                          <ShoppingBag size={13} />
-                          <span>ADD TO BAG</span>
-                        </button>
-                        <button
-                          onClick={() => setQuickViewProduct(product)}
-                          className="w-9 h-9 rounded-full bg-white/90 backdrop-blur-md text-black flex items-center justify-center hover:bg-black hover:text-white transition-all shadow-lg cursor-pointer shrink-0"
-                          title="Quick View"
-                        >
-                          <Eye size={14} />
-                        </button>
-                      </div>
+                      {/* Quick View Eye Button in Photo Corner */}
+                      <button
+                        onClick={() => setQuickViewProduct(product)}
+                        className="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm text-black flex items-center justify-center hover:bg-black hover:text-white transition-all shadow-md z-10 cursor-pointer"
+                        title="Quick View"
+                      >
+                        <Eye size={15} />
+                      </button>
                     </div>
 
                     {/* Product Details */}
                     <div className="p-4 md:p-5 flex-1 flex flex-col justify-between space-y-4">
-                      <div className="space-y-1.5">
-                        <div className="flex items-center justify-between text-[10px] text-neutral-400 font-extrabold uppercase tracking-widest">
-                          <span>{product.category}</span>
-                          <span>{product.id}</span>
-                        </div>
-                        <h3 className="text-sm font-bold text-[#111111] tracking-tight group-hover:text-neutral-600 transition-colors line-clamp-1">
-                          {product.name}
-                        </h3>
-                      </div>
-
-                      {/* Size Selector */}
-                      {product.sizes && product.sizes.length > 0 && (
-                        <div className="space-y-1.5 pt-1">
-                          <span className="text-[9px] font-extrabold text-neutral-400 uppercase tracking-widest">Size</span>
-                          <div className="flex flex-wrap gap-1.5">
-                            {product.sizes.map((sz) => (
-                              <button
-                                key={sz}
-                                onClick={() => handleSizeSelect(product.id, sz)}
-                                className={`text-[10px] font-black px-2.5 py-1 border transition-colors cursor-pointer rounded-2xs ${
-                                  selectedSize === sz
-                                    ? 'bg-black text-white border-black'
-                                    : 'bg-white text-neutral-600 border-black/10 hover:border-black'
-                                }`}
-                              >
-                                {sz}
-                              </button>
-                            ))}
+                      <div className="space-y-3">
+                        <div className="space-y-1.5">
+                          <div className="flex items-center justify-between text-[10px] text-neutral-400 font-extrabold uppercase tracking-widest">
+                            <span>{product.category}</span>
+                            <span>{product.id}</span>
                           </div>
+                          <h3 className="text-sm font-bold text-[#111111] tracking-tight group-hover:text-neutral-600 transition-colors line-clamp-1">
+                            {product.name}
+                          </h3>
                         </div>
-                      )}
 
-                      {/* Price & Add to Bag */}
-                      <div className="pt-3 border-t border-black/5 flex items-center justify-between">
-                        <div className="flex items-baseline gap-2">
+                        {/* Size Selector */}
+                        {product.sizes && product.sizes.length > 0 && (
+                          <div className="space-y-1.5 pt-1">
+                            <span className="text-[9px] font-extrabold text-neutral-400 uppercase tracking-widest">Size</span>
+                            <div className="flex flex-wrap gap-1.5">
+                              {product.sizes.map((sz) => (
+                                <button
+                                  key={sz}
+                                  onClick={() => handleSizeSelect(product.id, sz)}
+                                  className={`text-[10px] font-black px-2.5 py-1 border transition-colors cursor-pointer rounded-2xs ${
+                                    selectedSize === sz
+                                      ? 'bg-black text-white border-black'
+                                      : 'bg-white text-neutral-600 border-black/10 hover:border-black'
+                                  }`}
+                                >
+                                  {sz}
+                                </button>
+                              ))}
+                            </div>
+                          </div>
+                        )}
+
+                        {/* Price */}
+                        <div className="pt-2 border-t border-black/5 flex items-baseline gap-2">
                           <span className="text-lg font-extrabold text-[#111111]">
                             ₹{product.price.toLocaleString()}
                           </span>
@@ -366,16 +357,17 @@ export const CollectionsPage: React.FC = () => {
                             </span>
                           )}
                         </div>
-
-                        <button
-                          onClick={() => addToCart(product, selectedSize)}
-                          className="bg-black text-white px-4 py-2.5 hover:bg-neutral-800 transition-colors cursor-pointer rounded-xs flex items-center gap-2 text-[10px] font-black tracking-widest uppercase shadow-sm"
-                          title="Add to Bag"
-                        >
-                          <ShoppingBag size={14} />
-                          <span>Add</span>
-                        </button>
                       </div>
+
+                      {/* Outer ADD TO BAG Button */}
+                      <button
+                        onClick={() => addToCart(product, selectedSize)}
+                        className="w-full bg-[#111111] text-white py-2.5 sm:py-3 px-4 hover:bg-neutral-800 transition-colors cursor-pointer rounded-xs flex items-center justify-center gap-2 text-[10px] sm:text-xs font-extrabold tracking-[0.18em] uppercase shadow-xs mt-2 active:scale-[0.98]"
+                        title="Add to Bag"
+                      >
+                        <ShoppingBag size={14} />
+                        <span>ADD TO BAG</span>
+                      </button>
                     </div>
                   </motion.div>
                 );

@@ -138,75 +138,76 @@ export const BestSellers: React.FC = () => {
                     />
                   )}
 
-                  {/* Floating Action Buttons */}
-                  <div className="absolute inset-x-3 bottom-3 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0 z-10">
-                    <button
-                      onClick={() => addToCart(product, 'M')}
-                      className="flex-1 bg-black/90 backdrop-blur-md text-white text-[10px] font-extrabold tracking-[0.18em] uppercase py-2.5 px-3 rounded-full flex items-center justify-center gap-2 hover:bg-black transition-all shadow-lg cursor-pointer"
-                    >
-                      <ShoppingBag size={13} />
-                      <span>ADD TO BAG</span>
-                    </button>
-                    <button
-                      onClick={() => setQuickViewProduct(product)}
-                      className="w-9 h-9 rounded-full bg-white/90 backdrop-blur-md text-black flex items-center justify-center hover:bg-black hover:text-white transition-all shadow-lg cursor-pointer shrink-0"
-                      title="Quick View"
-                    >
-                      <Eye size={14} />
-                    </button>
-                  </div>
+                  {/* Quick View Eye Button in Photo Corner */}
+                  <button
+                    onClick={() => setQuickViewProduct(product)}
+                    className="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm text-black flex items-center justify-center hover:bg-black hover:text-white transition-all shadow-md z-10 cursor-pointer"
+                    title="Quick View"
+                  >
+                    <Eye size={15} />
+                  </button>
                 </div>
 
-                {/* ── Product Meta ── */}
-                <div className="mt-3.5 flex flex-col gap-2">
+                {/* ── Product Meta & Outer Card Action ── */}
+                <div className="mt-3.5 flex flex-col justify-between flex-1 gap-2">
+                  <div className="space-y-2">
+                    {/* Name */}
+                    <h3
+                      onClick={() => setQuickViewProduct(product)}
+                      className="text-sm font-bold tracking-wide text-[#111111] hover:text-neutral-600 transition-colors cursor-pointer leading-tight"
+                    >
+                      {product.name}
+                    </h3>
 
-                  {/* Name */}
-                  <h3
-                    onClick={() => setQuickViewProduct(product)}
-                    className="text-sm font-bold tracking-wide text-[#111111] hover:text-neutral-600 transition-colors cursor-pointer leading-tight"
-                  >
-                    {product.name}
-                  </h3>
+                    {/* Star Rating */}
+                    {product.rating && <StarRating rating={product.rating} />}
 
-                  {/* Star Rating */}
-                  {product.rating && <StarRating rating={product.rating} />}
-
-                  {/* Price Row */}
-                  <div className="flex items-center gap-2">
-                    <span className="text-sm font-extrabold text-[#111111]">
-                      ₹{product.price.toLocaleString('en-IN')}
-                    </span>
-                    {product.originalPrice && (
-                      <span className="text-xs text-neutral-400 line-through font-medium">
-                        ₹{product.originalPrice.toLocaleString('en-IN')}
+                    {/* Price Row */}
+                    <div className="flex items-center gap-2">
+                      <span className="text-sm font-extrabold text-[#111111]">
+                        ₹{product.price.toLocaleString('en-IN')}
                       </span>
-                    )}
-                    {product.originalPrice && (
-                      <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-2xs">
-                        {Math.round((1 - product.price / product.originalPrice) * 100)}% OFF
-                      </span>
+                      {product.originalPrice && (
+                        <span className="text-xs text-neutral-400 line-through font-medium">
+                          ₹{product.originalPrice.toLocaleString('en-IN')}
+                        </span>
+                      )}
+                      {product.originalPrice && (
+                        <span className="text-[10px] font-black text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-2xs">
+                          {Math.round((1 - product.price / product.originalPrice) * 100)}% OFF
+                        </span>
+                      )}
+                    </div>
+
+                    {/* Color Swatches */}
+                    {hasColors && (
+                      <div className="flex items-center gap-1.5 pt-0.5">
+                        {product.colors!.map((color) => (
+                          <button
+                            key={color}
+                            title={color}
+                            onMouseEnter={() => setHoveredColors((prev) => ({ ...prev, [product.id]: color }))}
+                            onMouseLeave={() => setHoveredColors((prev) => { const n = { ...prev }; delete n[product.id]; return n; })}
+                            className={`w-4 h-4 rounded-full border-2 transition-all duration-150 cursor-pointer hover:scale-125 ${activeColor === color ? 'border-black scale-125' : 'border-transparent hover:border-black/30'
+                              }`}
+                            style={{ backgroundColor: color }}
+                          />
+                        ))}
+                        <span className="text-[9px] text-neutral-400 font-bold ml-0.5">
+                          {product.colors!.length} colours
+                        </span>
+                      </div>
                     )}
                   </div>
 
-                  {/* Color Swatches */}
-                  {hasColors && (
-                    <div className="flex items-center gap-1.5 pt-0.5">
-                      {product.colors!.map((color) => (
-                        <button
-                          key={color}
-                          title={color}
-                          onMouseEnter={() => setHoveredColors((prev) => ({ ...prev, [product.id]: color }))}
-                          onMouseLeave={() => setHoveredColors((prev) => { const n = { ...prev }; delete n[product.id]; return n; })}
-                          className={`w-4 h-4 rounded-full border-2 transition-all duration-150 cursor-pointer hover:scale-125 ${activeColor === color ? 'border-black scale-125' : 'border-transparent hover:border-black/30'
-                            }`}
-                          style={{ backgroundColor: color }}
-                        />
-                      ))}
-                      <span className="text-[9px] text-neutral-400 font-bold ml-0.5">
-                        {product.colors!.length} colours
-                      </span>
-                    </div>
-                  )}
+                  {/* Outer ADD TO BAG Button */}
+                  <button
+                    onClick={() => addToCart(product, 'M')}
+                    className="w-full bg-[#111111] text-white text-[10px] sm:text-xs font-extrabold tracking-[0.18em] uppercase py-2.5 sm:py-3 px-4 rounded-xs hover:bg-neutral-800 transition-all flex items-center justify-center gap-2 mt-2 shadow-xs cursor-pointer active:scale-[0.98]"
+                  >
+                    <ShoppingBag size={14} />
+                    <span>ADD TO BAG</span>
+                  </button>
                 </div>
               </motion.div>
             );
