@@ -76,47 +76,56 @@ export const Navbar: React.FC = () => {
             </button>
           </div>
 
-          {/* Utility Icons & Labels */}
-          <div className="flex items-center space-x-2 sm:space-x-4 md:space-x-5 text-black">
+          {/* Utility Icons & Badges */}
+          <div className="flex items-center space-x-1 sm:space-x-3 text-black">
+            {/* Search Button */}
             <button
               onClick={() => setSearchOpen(true)}
-              className="flex items-center gap-1.5 hover:opacity-60 transition-opacity p-1.5 text-[10px] sm:text-[11px] font-semibold tracking-[0.18em] uppercase cursor-pointer"
+              className="p-2 hover:opacity-60 transition-opacity cursor-pointer flex items-center justify-center rounded-full hover:bg-black/5"
               title="Search"
+              aria-label="Search"
             >
-              <Search size={16} strokeWidth={1.75} />
-              <span className="hidden sm:inline">SEARCH</span>
+              <Search size={19} strokeWidth={1.75} />
             </button>
 
             {/* Wishlist Button */}
             <button
               onClick={() => setActiveView('wishlist')}
-              className={`flex items-center gap-1.5 hover:opacity-60 transition-opacity p-1.5 text-[10px] sm:text-[11px] font-semibold tracking-[0.18em] uppercase cursor-pointer ${
-                activeView === 'wishlist' ? 'text-black font-extrabold' : 'text-black'
-              }`}
+              className="relative p-2 hover:opacity-60 transition-opacity cursor-pointer flex items-center justify-center rounded-full hover:bg-black/5"
               title="Wishlist"
+              aria-label="Wishlist"
             >
               <Heart
-                size={16}
+                size={19}
                 strokeWidth={1.75}
                 className={wishlist.length > 0 ? 'fill-black text-black' : ''}
               />
-              <span>WISHLIST ({wishlist.length})</span>
+              {wishlist.length > 0 && (
+                <span className="absolute top-0 right-0 bg-black text-white text-[9px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center leading-none border border-[#F8F8F6] shadow-xs">
+                  {wishlist.length}
+                </span>
+              )}
             </button>
 
             {/* Cart Button */}
             <button
               onClick={() => setCartOpen(true)}
-              className="flex items-center gap-1.5 hover:opacity-60 transition-opacity relative p-1.5 text-[10px] sm:text-[11px] font-semibold tracking-[0.18em] uppercase cursor-pointer"
-              title="Bag"
+              className="relative p-2 hover:opacity-60 transition-opacity cursor-pointer flex items-center justify-center rounded-full hover:bg-black/5"
+              title="Shopping Bag"
+              aria-label="Shopping Bag"
             >
-              <ShoppingBag size={16} strokeWidth={1.75} />
-              <span>CART ({cartCount})</span>
+              <ShoppingBag size={19} strokeWidth={1.75} />
+              {cartCount > 0 && (
+                <span className="absolute top-0 right-0 bg-black text-white text-[9px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center leading-none border border-[#F8F8F6] shadow-xs">
+                  {cartCount}
+                </span>
+              )}
             </button>
 
             {/* Mobile Hamburger Toggle */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="lg:hidden p-1.5 text-black hover:opacity-70 transition-opacity focus:outline-none cursor-pointer"
+              className="lg:hidden p-2 text-black hover:opacity-70 transition-opacity focus:outline-none cursor-pointer rounded-full hover:bg-black/5"
               aria-label="Toggle Menu"
             >
               {mobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
