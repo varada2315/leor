@@ -12,6 +12,7 @@ import { AboutPage } from './components/AboutPage';
 import { CollectionsPage } from './components/CollectionsPage';
 import { Footer } from './components/Footer';
 import { CartDrawer } from './components/CartDrawer';
+import { AnnouncementBar } from './components/AnnouncementBar';
 import { WishlistDrawer } from './components/WishlistDrawer';
 import { SearchModal } from './components/SearchModal';
 import { QuickViewModal } from './components/QuickViewModal';
@@ -24,6 +25,7 @@ const AppContent: React.FC = () => {
     <div className="min-h-screen bg-[#F8F8F6] flex flex-col font-sans selection:bg-black selection:text-white">
       {/* Fixed Header Wrapper */}
       <header className="fixed top-0 left-0 right-0 z-50 flex flex-col">
+        <AnnouncementBar />
         <Navbar />
       </header>
 
