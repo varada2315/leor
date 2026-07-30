@@ -12,52 +12,7 @@ const fadeUp = {
   }),
 };
 
-/* ── animated counter hook ── */
-function useCountUp(target: number, duration = 1800) {
-  const [count, setCount] = useState(0);
-  const [started, setStarted] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) setStarted(true); },
-      { threshold: 0.4 }
-    );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
-  }, []);
-
-  useEffect(() => {
-    if (!started) return;
-    let startTime: number;
-    const step = (ts: number) => {
-      if (!startTime) startTime = ts;
-      const progress = Math.min((ts - startTime) / duration, 1);
-      setCount(Math.floor(progress * target));
-      if (progress < 1) requestAnimationFrame(step);
-    };
-    requestAnimationFrame(step);
-  }, [started, target, duration]);
-
-  return { count, ref };
-}
-
-/* ── stat item ── */
-interface StatProps { icon: React.ElementType; value: number; suffix: string; label: string; }
-const StatItem: React.FC<StatProps> = ({ icon: Icon, value, suffix, label }) => {
-  const { count, ref } = useCountUp(value);
-  return (
-    <div ref={ref} className="flex flex-col items-center text-center gap-2">
-      <div className="w-10 h-10 rounded-full bg-black/6 flex items-center justify-center mb-1">
-        <Icon size={17} strokeWidth={1.5} />
-      </div>
-      <p className="text-3xl md:text-4xl font-extrabold tracking-tight text-[#111]">
-        {count.toLocaleString()}{suffix}
-      </p>
-      <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-neutral-500">{label}</p>
-    </div>
-  );
-};
 
 /* ── values data ── */
 const values = [
@@ -149,17 +104,7 @@ export const AboutPage: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* ══ 2. STATS STRIP ══ */}
-      <section className="bg-white border-y border-black/6 py-12">
-        <div className="max-w-5xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4">
-            <StatItem icon={Users}   value={120} suffix="K+" label="Community Members" />
-            <StatItem icon={Package} value={2800} suffix="+"  label="Pieces Crafted" />
-            <StatItem icon={Globe}   value={38}   suffix=""   label="Countries Reached" />
-            <StatItem icon={Award}   value={100}  suffix="%"  label="Quality Guaranteed" />
-          </div>
-        </div>
-      </section>
+
 
       {/* ══ 3. OUR STORY — text + parallax image ══ */}
       <section ref={storyRef} className="max-w-5xl mx-auto px-6 md:px-12 py-16 md:py-24">
