@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Instagram, Facebook, Youtube, Star } from 'lucide-react';
+import { ArrowRight, Instagram, Facebook, Youtube } from 'lucide-react';
 import { useStore } from '../context/StoreContext';
 
 export const Footer: React.FC = () => {
@@ -124,28 +124,8 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* ── Trust Row: Reviews + Payment Methods ── */}
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-5 pb-8 border-b border-white/10">
-
-          {/* Trustpilot-style badge */}
-          <div className="flex items-center gap-3">
-            <div className="flex items-center gap-1">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} size={13} className="fill-[#00B67A] text-[#00B67A]" />
-              ))}
-            </div>
-            <div className="text-[11px] text-neutral-400 leading-tight">
-              <span className="font-semibold text-neutral-300">4.8/5</span>
-              {' '}· Rated on Google Reviews
-            </div>
-            <div className="h-4 w-px bg-white/10 mx-1 hidden sm:block" />
-            <div className="flex items-center gap-1.5">
-              <div className="w-5 h-5 rounded-full bg-[#00B67A]/20 flex items-center justify-center">
-                <span className="text-[8px] font-black text-[#00B67A]">★</span>
-              </div>
-              <span className="text-[10px] font-bold tracking-wide text-neutral-400 uppercase">Trustpilot</span>
-            </div>
-          </div>
+        {/* ── Trust Row: Payment Methods ── */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-5 pb-8 border-b border-white/10">
 
           {/* Payment icons — brand colors */}
           <div className="flex items-center gap-4 flex-wrap justify-center sm:justify-end">
