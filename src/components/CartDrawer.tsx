@@ -48,25 +48,19 @@ export const CartDrawer: React.FC = () => {
               </div>
 
               {/* Free Shipping Progress Indicator */}
-              <div className="bg-[#0e0e10] text-white px-6 py-3.5 text-xs border-b border-white/10">
+              <div className="bg-[#0e0e10] text-white px-6 py-3 text-xs">
                 {remainingForFreeShipping > 0 ? (
-                  <div className="flex items-center justify-between">
-                    <p className="tracking-wide text-[11px] font-semibold text-neutral-200">
-                      Add <span className="font-bold text-amber-400">₹{remainingForFreeShipping.toLocaleString('en-IN')}</span> more to unlock <span className="font-bold text-white uppercase">FREE EXPRESS SHIPPING</span>
-                    </p>
-                    <span className="text-[10px] font-mono text-neutral-400">{Math.round(progressPercent)}%</span>
-                  </div>
+                  <p className="tracking-wide">
+                    Add <span className="font-bold text-amber-400">₹{remainingForFreeShipping.toLocaleString('en-IN')}</span> more to unlock <span className="font-bold">FREE SHIPPING</span>
+                  </p>
                 ) : (
-                  <div className="flex items-center gap-2 font-black text-xs tracking-[0.18em] text-[#00E676] uppercase">
-                    <span className="text-sm">🎉</span>
-                    <span>YOU HAVE UNLOCKED FREE EXPRESS SHIPPING!</span>
-                  </div>
+                  <p className="font-bold text-emerald-400 tracking-wide">
+                    🎉 CONGRATULATIONS! YOU HAVE UNLOCKED FREE EXPRESS SHIPPING!
+                  </p>
                 )}
-                <div className="w-full bg-white/20 h-1.5 rounded-full mt-2.5 overflow-hidden">
+                <div className="w-full bg-white/20 h-1.5 rounded-full mt-2 overflow-hidden">
                   <div
-                    className={`h-full transition-all duration-500 rounded-full ${
-                      remainingForFreeShipping <= 0 ? 'bg-[#00E676] shadow-[0_0_8px_#00E676]' : 'bg-white'
-                    }`}
+                    className="bg-white h-full transition-all duration-500 rounded-full"
                     style={{ width: `${progressPercent}%` }}
                   />
                 </div>
