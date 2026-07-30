@@ -77,7 +77,7 @@ export const HeroSection: React.FC = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, ease: customEasing }}
-      className="relative w-full min-h-[85vh] lg:min-h-[92vh] bg-[#ECECEC] flex flex-col justify-between px-4 sm:px-6 md:px-16 pt-24 sm:pt-32 pb-8 sm:pb-10 overflow-hidden select-none"
+      className="relative w-full min-h-[85vh] lg:min-h-[92vh] bg-[#ECECEC] flex flex-col justify-between px-4 sm:px-6 md:px-16 pt-24 sm:pt-32 pb-11 sm:pb-14 overflow-hidden select-none"
     >
       {/* Background Oversized LEOR Brand Name in Light Grey */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
