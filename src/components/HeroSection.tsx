@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from 'react';
-import { motion, useMotionValue } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 export const HeroSection: React.FC = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -9,10 +9,6 @@ export const HeroSection: React.FC = () => {
   const targetPos = useRef({ x: -1000, y: -1000 });
   const smoothPos = useRef({ x: -1000, y: -1000 });
   const isHovered = useRef(false);
-
-  // Drag-to-scroll refs and motion values for mobile scroll toggle
-  const y = useMotionValue(0);
-  const isDragging = useRef(false);
 
   useEffect(() => {
     let animId: number;
@@ -71,27 +67,6 @@ export const HeroSection: React.FC = () => {
 
   const handlePointerLeave = () => {
     isHovered.current = false;
-  };
-
-  // Synchronize natural scroll with the slider thumb
-  useEffect(() => {
-    const handleScroll = () => {
-      if (isDragging.current) return;
-      const scrollTop = window.scrollY;
-      const maxScroll = window.innerHeight;
-      const progress = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
-      y.set(progress * 136);
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [y]);
-
-  const handleDrag = () => {
-    const currentY = y.get();
-    const progress = currentY / 136;
-    const maxScroll = window.innerHeight;
-    window.scrollTo(0, progress * maxScroll);
   };
 
   const customEasing = [0.16, 1, 0.3, 1];
@@ -202,34 +177,6 @@ export const HeroSection: React.FC = () => {
             <span>NEW</span>
             <span>COLLECTION</span>
             <span>2024</span>
-          </motion.div>
-        </div>
-      </div>
-
-      {/* Vertical Scroll Drag Toggle (Mobile Only) */}
-      <div className="absolute right-4 top-1/2 -translate-y-1/2 z-30 md:hidden flex flex-col items-center gap-2">
-        <span className="text-[8px] font-extrabold tracking-[0.2em] text-neutral-500 uppercase rotate-90 origin-center my-4">
-          SCROLL
-        </span>
-        {/* Track */}
-        <div className="w-[3px] h-40 bg-black/10 rounded-full relative">
-          {/* Thumb */}
-          <motion.div
-            drag="y"
-            dragConstraints={{ top: 0, bottom: 136 }}
-            dragElastic={0}
-            dragMomentum={false}
-            style={{ y }}
-            onDragStart={() => { isDragging.current = true; }}
-            onDrag={handleDrag}
-            onDragEnd={() => { isDragging.current = false; }}
-            className="w-6 h-6 bg-black rounded-full border-2 border-white shadow-lg absolute left-1/2 -translate-x-1/2 cursor-grab active:cursor-grabbing touch-none flex items-center justify-center"
-          >
-            {/* Minimalist grab indicator lines */}
-            <div className="flex gap-[2px]">
-              <div className="w-[1.5px] h-2 bg-white rounded-full"></div>
-              <div className="w-[1.5px] h-2 bg-white rounded-full"></div>
-            </div>
           </motion.div>
         </div>
       </div>
