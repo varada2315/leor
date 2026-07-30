@@ -177,7 +177,7 @@ export const CollectionsPage: React.FC = () => {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row lg:items-center justify-between gap-5">
           
           {/* Category Tabs */}
-          <div className="flex flex-wrap items-center gap-2 text-xs">
+          <div className="flex items-center gap-2 text-xs overflow-x-auto no-scrollbar max-w-full pb-1 flex-nowrap sm:flex-wrap">
             {categories.map((cat) => {
               const isActive = selectedCategory === cat;
               const count = cat === 'ALL' ? PRODUCTS.length : PRODUCTS.filter(p => p.category.toUpperCase() === cat).length;

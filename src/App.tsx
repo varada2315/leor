@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { StoreProvider, useStore } from './context/StoreContext';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
@@ -19,6 +19,10 @@ import { Toast } from './components/Toast';
 
 const AppContent: React.FC = () => {
   const { activeView } = useStore();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+  }, [activeView]);
 
   return (
     <div className="min-h-screen bg-[#F8F8F6] flex flex-col font-sans selection:bg-black selection:text-white">

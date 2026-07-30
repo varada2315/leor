@@ -60,7 +60,7 @@ export const BestSellers: React.FC = () => {
 
           <div className="flex flex-wrap items-center justify-between sm:justify-end gap-3 w-full sm:w-auto">
             {/* Filter Tabs */}
-            <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-bold tracking-widest uppercase">
+            <div className="flex items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-bold tracking-widest uppercase overflow-x-auto no-scrollbar max-w-full pb-1 flex-nowrap sm:flex-wrap">
               {(['ALL', 'DENIM', 'TOPS', 'BOTTOMS'] as const).map((tab) => (
                 <button
                   key={tab}
