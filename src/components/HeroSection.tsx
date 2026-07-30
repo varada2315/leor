@@ -113,7 +113,7 @@ export const HeroSection: React.FC = () => {
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.2, ease: customEasing }}
-          className="absolute inset-0 flex items-center justify-center cursor-crosshair z-10 pointer-events-auto"
+          className="absolute inset-0 flex items-center justify-center cursor-crosshair z-10 pointer-events-auto translate-y-4 sm:translate-y-6 md:translate-y-8"
         >
           {/* Interactive wrapper containing both models, sized to the image */}
           <div className="relative h-full flex items-center justify-center touch-none md:touch-auto">
