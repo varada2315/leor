@@ -98,7 +98,7 @@ export const Navbar: React.FC = () => {
               <Heart
                 size={19}
                 strokeWidth={1.75}
-                className={wishlist.length > 0 ? 'fill-black text-black' : ''}
+                className="text-black"
               />
               {wishlist.length > 0 && (
                 <span className="absolute top-0 right-0 bg-black text-white text-[9px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center leading-none border border-[#F8F8F6] shadow-xs">
