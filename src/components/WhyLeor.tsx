@@ -88,7 +88,7 @@ export const WhyLeor: React.FC = () => {
 
       {/* Decorative Large Watermark Background */}
       <div className="absolute right-4 bottom-0 text-[18rem] md:text-[24rem] font-black text-white/[0.02] select-none pointer-events-none leading-none tracking-tighter">
-        LEOR
+        LEOR™
       </div>
 
       <div className="relative max-w-7xl mx-auto space-y-16">
@@ -97,10 +97,10 @@ export const WhyLeor: React.FC = () => {
           <div className="space-y-3 max-w-xl">
             <div className="inline-flex items-center gap-2 text-[10px] font-extrabold tracking-[0.4em] uppercase text-neutral-400">
               <span className="w-6 h-px bg-neutral-400" />
-              The LEOR Standard
+              The LEOR™ Standard
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight uppercase font-sans text-white leading-none">
-              Why LEOR<span className="text-neutral-500">.</span>
+              Why LEOR™<span className="text-neutral-500">.</span>
             </h2>
           </div>
           <p className="text-xs md:text-sm text-neutral-400 max-w-md font-normal leading-relaxed">

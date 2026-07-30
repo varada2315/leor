@@ -31,8 +31,8 @@ export const Navbar: React.FC = () => {
             onClick={() => handleNavClick('#')}
             className="inline-block group text-left cursor-pointer focus:outline-none"
           >
-            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-[0.2em] sm:tracking-[0.25em] text-[#111111] uppercase font-sans leading-none group-hover:opacity-80 transition-opacity">
-              LEOR
+            <h1 className="text-xl sm:text-2xl md:text-3xl font-extrabold tracking-[0.2em] sm:tracking-[0.25em] text-[#111111] uppercase font-sans leading-none group-hover:opacity-80 transition-opacity flex items-start">
+              LEOR<span className="text-[0.45em] align-top relative -top-[0.1em] ml-0.5 font-extrabold">™</span>
             </h1>
             <p className="text-[9px] sm:text-[10px] font-medium text-neutral-500 tracking-[0.15em] mt-0.5">
               Own Your Edge.
