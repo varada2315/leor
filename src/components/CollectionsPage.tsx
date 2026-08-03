@@ -42,8 +42,7 @@ const fadeUp = {
 };
 
 export const CollectionsPage: React.FC = () => {
-  const { wishlist, toggleWishlist, addToCart, setQuickViewProduct } = useStore();
-  const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
+  const { wishlist, toggleWishlist, addToCart, setQuickViewProduct, selectedCategory, setSelectedCategory } = useStore();
   const [sortBy, setSortBy] = useState<'FEATURED' | 'LOW_HIGH' | 'HIGH_LOW' | 'NAME'>('FEATURED');
   const [gridCols, setGridCols] = useState<3 | 4>(4);
   const [selectedSizes, setSelectedSizes] = useState<Record<string, string>>({});
@@ -292,11 +291,11 @@ export const CollectionsPage: React.FC = () => {
                       {/* Wishlist Button */}
                       <button
                         onClick={() => toggleWishlist(product.id)}
-                        className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-black hover:scale-110 transition-transform shadow-md z-10 cursor-pointer"
+                        className="absolute top-3 right-3 w-7 h-7 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-black hover:scale-110 transition-transform shadow-md z-10 cursor-pointer"
                         title={isWishlisted ? 'Remove from wishlist' : 'Save to wishlist'}
                       >
                         <Heart
-                          size={15}
+                          size={13}
                           className={isWishlisted ? 'fill-black text-black' : 'text-black'}
                         />
                       </button>
@@ -304,10 +303,10 @@ export const CollectionsPage: React.FC = () => {
                       {/* Quick View Eye Button in Photo Corner */}
                       <button
                         onClick={() => setQuickViewProduct(product)}
-                        className="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm text-black flex items-center justify-center hover:bg-black hover:text-white transition-all shadow-md z-10 cursor-pointer"
+                        className="absolute bottom-3 right-3 w-7 h-7 rounded-full bg-white/90 backdrop-blur-sm text-black flex items-center justify-center hover:bg-black hover:text-white transition-all shadow-md z-10 cursor-pointer"
                         title="Quick View"
                       >
-                        <Eye size={15} />
+                        <Eye size={13} />
                       </button>
                     </div>
 

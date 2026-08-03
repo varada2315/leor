@@ -4,7 +4,16 @@ import { useStore } from '../context/StoreContext';
 
 export const Footer: React.FC = () => {
   const [email, setEmail] = useState('');
-  const { showToast } = useStore();
+  const { showToast, setActiveView, setSelectedCategory, setActiveHelpModal } = useStore();
+
+  const handleShopClick = (category: string) => {
+    setSelectedCategory(category);
+    setActiveView('collections');
+  };
+
+  const handleBrandClick = () => {
+    setActiveView('about');
+  };
 
   const handleSubscribe = (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,11 +92,11 @@ export const Footer: React.FC = () => {
             <div className="space-y-3">
               <h4 className="font-bold tracking-[0.2em] uppercase text-white">SHOP</h4>
               <ul className="space-y-2 text-neutral-400">
-                <li><a href="#all" className="hover:text-white transition-colors">All Products</a></li>
-                <li><a href="#denim" className="hover:text-white transition-colors">Denim</a></li>
-                <li><a href="#tops" className="hover:text-white transition-colors">Tops</a></li>
-                <li><a href="#bottoms" className="hover:text-white transition-colors">Bottoms</a></li>
-                <li><a href="#new" className="hover:text-white transition-colors">New Arrivals</a></li>
+                <li><button onClick={() => handleShopClick('ALL')} className="hover:text-white transition-colors cursor-pointer text-left">All Products</button></li>
+                <li><button onClick={() => handleShopClick('DENIM')} className="hover:text-white transition-colors cursor-pointer text-left">Denim</button></li>
+                <li><button onClick={() => handleShopClick('TOPS')} className="hover:text-white transition-colors cursor-pointer text-left">Tops</button></li>
+                <li><button onClick={() => handleShopClick('BOTTOMS')} className="hover:text-white transition-colors cursor-pointer text-left">Bottoms</button></li>
+                <li><button onClick={() => handleShopClick('ALL')} className="hover:text-white transition-colors cursor-pointer text-left">New Arrivals</button></li>
               </ul>
             </div>
 
@@ -95,10 +104,9 @@ export const Footer: React.FC = () => {
             <div className="space-y-3">
               <h4 className="font-bold tracking-[0.2em] uppercase text-white">BRAND</h4>
               <ul className="space-y-2 text-neutral-400">
-                <li><a href="#story" className="hover:text-white transition-colors">Our Story</a></li>
-                <li><a href="#craft" className="hover:text-white transition-colors">Craftsmanship</a></li>
-                <li><a href="#sustainability" className="hover:text-white transition-colors">Sustainability</a></li>
-                <li><a href="#careers" className="hover:text-white transition-colors">Careers</a></li>
+                <li><button onClick={handleBrandClick} className="hover:text-white transition-colors cursor-pointer text-left">Our Story</button></li>
+                <li><button onClick={handleBrandClick} className="hover:text-white transition-colors cursor-pointer text-left">Craftsmanship</button></li>
+                <li><button onClick={handleBrandClick} className="hover:text-white transition-colors cursor-pointer text-left">Sustainability</button></li>
               </ul>
             </div>
 
@@ -106,10 +114,10 @@ export const Footer: React.FC = () => {
             <div className="space-y-3">
               <h4 className="font-bold tracking-[0.2em] uppercase text-white">HELP</h4>
               <ul className="space-y-2 text-neutral-400">
-                <li><a href="#size" className="hover:text-white transition-colors">Size Guide</a></li>
-                <li><a href="#shipping" className="hover:text-white transition-colors">Shipping</a></li>
-                <li><a href="#returns" className="hover:text-white transition-colors">Returns</a></li>
-                <li><a href="#faq" className="hover:text-white transition-colors">FAQs</a></li>
+                <li><button onClick={() => setActiveHelpModal('size')} className="hover:text-white transition-colors cursor-pointer text-left">Size Guide</button></li>
+                <li><button onClick={() => setActiveHelpModal('shipping')} className="hover:text-white transition-colors cursor-pointer text-left">Shipping</button></li>
+                <li><button onClick={() => setActiveHelpModal('returns')} className="hover:text-white transition-colors cursor-pointer text-left">Returns</button></li>
+                <li><button onClick={() => setActiveHelpModal('faq')} className="hover:text-white transition-colors cursor-pointer text-left">FAQs</button></li>
               </ul>
             </div>
 
@@ -170,10 +178,10 @@ export const Footer: React.FC = () => {
         <div className="flex flex-col sm:flex-row justify-between items-center text-[11px] text-neutral-500 gap-4">
           <p>© 2026 LEOR™. All Rights Reserved.</p>
           <div className="flex flex-wrap items-center gap-6">
-            <a href="#privacy" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#terms" className="hover:text-white transition-colors">Terms &amp; Conditions</a>
-            <a href="#disclaimer" className="hover:text-white transition-colors">Disclaimer</a>
-            <a href="#refund" className="hover:text-white transition-colors">Refund Policy</a>
+            <button onClick={() => setActiveHelpModal('privacy')} className="hover:text-white transition-colors cursor-pointer">Privacy Policy</button>
+            <button onClick={() => setActiveHelpModal('terms')} className="hover:text-white transition-colors cursor-pointer">Terms &amp; Conditions</button>
+            <button onClick={() => setActiveHelpModal('disclaimer')} className="hover:text-white transition-colors cursor-pointer">Disclaimer</button>
+            <button onClick={() => setActiveHelpModal('refund')} className="hover:text-white transition-colors cursor-pointer">Refund Policy</button>
           </div>
         </div>
 

@@ -77,7 +77,7 @@ export const HeroSection: React.FC = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 1, ease: customEasing }}
-      className="relative w-full min-h-[85vh] lg:min-h-[92vh] bg-[#ECECEC] flex flex-col justify-between px-4 sm:px-6 md:px-16 pt-24 sm:pt-32 pb-11 sm:pb-14 overflow-hidden select-none"
+      className="relative w-full min-h-[88vh] lg:min-h-[95vh] bg-[#ECECEC] flex flex-col justify-between px-4 sm:px-6 md:px-16 pt-24 sm:pt-32 pb-11 sm:pb-14 overflow-hidden select-none"
     >
       {/* Background Oversized LEOR Brand Name in Light Grey */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0 overflow-hidden">
@@ -113,7 +113,7 @@ export const HeroSection: React.FC = () => {
           initial={{ opacity: 0, scale: 0.97 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.2, ease: customEasing }}
-          className="absolute inset-0 flex items-center justify-center cursor-crosshair z-10 pointer-events-auto -translate-y-5 sm:-translate-y-8 md:-translate-y-10"
+          className="absolute inset-0 flex items-center justify-center cursor-crosshair z-10 pointer-events-auto -translate-y-10 sm:-translate-y-14 md:-translate-y-16 lg:-translate-y-20"
         >
           {/* Interactive wrapper containing both models, sized to the image */}
           <div className="relative h-full flex items-center justify-center touch-none md:touch-auto">
@@ -122,7 +122,7 @@ export const HeroSection: React.FC = () => {
               <img
                 src="/assets/hero-model-desaturated.png"
                 alt="LEOR Editorial Outfit"
-                className="h-[48vh] sm:h-[58vh] md:h-[68vh] lg:h-[75vh] max-h-[700px] w-auto object-contain pointer-events-none drop-shadow-xl"
+                className="h-[55vh] sm:h-[66vh] md:h-[77vh] lg:h-[85vh] max-h-[800px] w-auto object-contain pointer-events-none drop-shadow-xl"
               />
             </div>
 
@@ -137,7 +137,7 @@ export const HeroSection: React.FC = () => {
               <img
                 src="/assets/hero-model-denim-blue.png"
                 alt="LEOR Blue Denim Outfit Detail"
-                className="h-[48vh] sm:h-[58vh] md:h-[68vh] lg:h-[75vh] max-h-[700px] w-auto object-contain pointer-events-none drop-shadow-xl"
+                className="h-[55vh] sm:h-[66vh] md:h-[77vh] lg:h-[85vh] max-h-[800px] w-auto object-contain pointer-events-none drop-shadow-xl"
               />
             </div>
           </div>
@@ -176,7 +176,7 @@ export const HeroSection: React.FC = () => {
           >
             <span>NEW</span>
             <span>COLLECTION</span>
-            <span>2024</span>
+            <span></span>
           </motion.div>
         </div>
       </div>

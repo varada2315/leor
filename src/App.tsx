@@ -15,6 +15,7 @@ import { CartDrawer } from './components/CartDrawer';
 import { WishlistDrawer } from './components/WishlistDrawer';
 import { SearchModal } from './components/SearchModal';
 import { QuickViewModal } from './components/QuickViewModal';
+import { HelpModal } from './components/HelpModal';
 import { Toast } from './components/Toast';
 
 const AppContent: React.FC = () => {
@@ -56,6 +57,7 @@ const AppContent: React.FC = () => {
       <WishlistDrawer />
       <SearchModal />
       <QuickViewModal />
+      <HelpModal />
       <Toast />
     </div>
   );

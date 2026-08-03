@@ -180,10 +180,10 @@ export const WishlistPage: React.FC = () => {
                           {/* Minimalist Heart Remove Button Top-Right */}
                           <button
                             onClick={() => toggleWishlist(product.id)}
-                            className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-black hover:bg-black hover:text-white transition-all shadow-sm z-10 cursor-pointer"
+                            className="absolute top-3 right-3 w-7 h-7 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-black hover:bg-black hover:text-white transition-all shadow-sm z-10 cursor-pointer"
                             title="Remove from Wishlist"
                           >
-                            <Heart size={15} className="fill-black text-black group-hover:fill-white group-hover:text-white transition-colors" />
+                            <Heart size={13} className="fill-black text-black group-hover:fill-white group-hover:text-white transition-colors" />
                           </button>
 
                           {/* Tag Badge Top-Left */}
@@ -196,10 +196,10 @@ export const WishlistPage: React.FC = () => {
                           {/* Quick View Floating Button Bottom Right */}
                           <button
                             onClick={() => setQuickViewProduct(product)}
-                            className="absolute bottom-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-sm hover:bg-black hover:text-white cursor-pointer z-10"
+                            className="absolute bottom-3 right-3 w-7 h-7 rounded-full bg-white/90 backdrop-blur-md text-black flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 shadow-sm hover:bg-black hover:text-white cursor-pointer z-10"
                             title="Quick View"
                           >
-                            <Eye size={15} />
+                            <Eye size={13} />
                           </button>
                         </div>
 
@@ -318,10 +318,10 @@ export const WishlistPage: React.FC = () => {
                     />
                     <button
                       onClick={() => toggleWishlist(product.id)}
-                      className="absolute top-3 right-3 w-8 h-8 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-black hover:bg-black hover:text-white transition-all shadow-sm cursor-pointer z-10"
+                      className="absolute top-3 right-3 w-7 h-7 rounded-full bg-white/90 backdrop-blur-md flex items-center justify-center text-black hover:bg-black hover:text-white transition-all shadow-sm cursor-pointer z-10"
                       title="Save to Wishlist"
                     >
-                      <Heart size={15} />
+                      <Heart size={13} />
                     </button>
                   </div>
                   <div className="mt-3 flex-1 flex flex-col justify-between">

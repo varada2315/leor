@@ -114,11 +114,11 @@ export const BestSellers: React.FC = () => {
                   {/* Wishlist */}
                   <button
                     onClick={() => toggleWishlist(product.id)}
-                    className="absolute top-3 right-3 w-9 h-9 rounded-full bg-white/85 backdrop-blur-sm flex items-center justify-center text-black hover:bg-black hover:text-white transition-all shadow-md z-10 cursor-pointer"
+                    className="absolute top-3 right-3 w-7 h-7 rounded-full bg-white/85 backdrop-blur-sm flex items-center justify-center text-black hover:bg-black hover:text-white transition-all shadow-md z-10 cursor-pointer"
                     aria-label="Wishlist"
                   >
                     <Heart
-                      size={16}
+                      size={13}
                       className={isLiked ? 'fill-black text-black' : ''}
                     />
                   </button>
@@ -141,10 +141,10 @@ export const BestSellers: React.FC = () => {
                   {/* Quick View Eye Button in Photo Corner */}
                   <button
                     onClick={() => setQuickViewProduct(product)}
-                    className="absolute bottom-3 right-3 w-9 h-9 rounded-full bg-white/90 backdrop-blur-sm text-black flex items-center justify-center hover:bg-black hover:text-white transition-all shadow-md z-10 cursor-pointer"
+                    className="absolute bottom-3 right-3 w-7 h-7 rounded-full bg-white/90 backdrop-blur-sm text-black flex items-center justify-center hover:bg-black hover:text-white transition-all shadow-md z-10 cursor-pointer"
                     title="Quick View"
                   >
-                    <Eye size={15} />
+                    <Eye size={13} />
                   </button>
                 </div>
 

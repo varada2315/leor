@@ -13,6 +13,10 @@ interface StoreContextType {
   isSearchOpen: boolean;
   quickViewProduct: Product | null;
   toastMessage: string | null;
+  selectedCategory: string;
+  setSelectedCategory: (cat: string) => void;
+  activeHelpModal: string | null;
+  setActiveHelpModal: (modal: string | null) => void;
   setActiveView: (view: ActiveView) => void;
   setCartOpen: (open: boolean) => void;
   setWishlistOpen: (open: boolean) => void;
@@ -166,6 +170,9 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     showToast(`Moved ${wishlistProducts.length} items to your bag`);
   };
 
+  const [selectedCategory, setSelectedCategory] = useState<string>('ALL');
+  const [activeHelpModal, setActiveHelpModal] = useState<string | null>(null);
+
   const cartTotal = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
   const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -180,6 +187,10 @@ export const StoreProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         isSearchOpen,
         quickViewProduct,
         toastMessage,
+        selectedCategory,
+        setSelectedCategory,
+        activeHelpModal,
+        setActiveHelpModal,
         setActiveView,
         setCartOpen,
         setWishlistOpen,
